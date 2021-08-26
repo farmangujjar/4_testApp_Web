@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="76967bc79bf946da8861099f648d1ebe" Name="Diagram1">
+        <EntityTypeShape EntityType="testAppModel.Choice" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="testAppModel.Config" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="testAppModel.FbaLabelPrint" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="testAppModel.FBAShipment" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="testAppModel.FBAShipmentDetail" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="testAppModel.Item" Width="1.5" PointX="4.75" PointY="5.75" />
+        <EntityTypeShape EntityType="testAppModel.ItemsMapping" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="testAppModel.User" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="testAppModel.Users_Whse" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="testAppModel.FBAShipmentPallet" Width="1.5" PointX="8.75" PointY="3.75" />
+        <EntityTypeShape EntityType="testAppModel.SkuPrepInfo" Width="1.5" PointX="8.75" PointY="6.75" />
+        <EntityTypeShape EntityType="testAppModel.UserPrefix" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="testAppModel.vw_FbaShipment_PcntComplete" Width="1.5" PointX="10.75" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

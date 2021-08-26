@@ -1,0 +1,1259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="testAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Choice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChoiceID" Type="int" Nullable="false" />
+          <Property Name="ChoiceName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChoiceDesc" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ChoiceValue" Type="nvarchar" MaxLength="250" />
+          <Property Name="ChoiceIndex" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ModifyDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConfigName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ConfigValue" Type="nvarchar(max)" />
+          <Property Name="ConfigType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConfigUser" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="LastUpdatedBy" Type="int" />
+          <Property Name="HasOnlyOne" Type="bit" />
+        </EntityType>
+        <EntityType Name="FbaLabelPrints">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShipmentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipmentDetailID" Type="int" />
+          <Property Name="LabelType" Type="nvarchar" MaxLength="50" />
+          <Property Name="LabelsPrinted" Type="int" Nullable="false" />
+          <Property Name="BoxNoStart" Type="int" Nullable="false" />
+          <Property Name="BoxNoEnd" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="WhseUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="PalletNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsCustom" Type="bit" />
+        </EntityType>
+        <EntityType Name="FBAShipment">
+          <Key>
+            <PropertyRef Name="ShipmentID" />
+          </Key>
+          <Property Name="ShipmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AmzShipmentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipmentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipmentDate" Type="datetime" />
+          <Property Name="ShipmentStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="LabelPrepType" Type="nvarchar" MaxLength="50" />
+          <Property Name="DestFulfmtCenterID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipFromAddress1" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipFromAddress2" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipFromCity" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipFromState" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipFromPostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipFromDistrictCounty" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipFromCountry" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShipFromName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyUser" Type="int" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="WhseStatus" Type="nvarchar" MaxLength="10" />
+          <Property Name="AreCasesRequired" Type="bit" Nullable="false" />
+          <Property Name="BoxContentSource" Type="nvarchar" MaxLength="20" />
+          <Property Name="WhseStatusUpdateBy" Type="int" />
+          <Property Name="WhseStatusUpdateDate" Type="datetime" />
+          <Property Name="OfficeStatus" Type="nvarchar" MaxLength="20" />
+          <Property Name="OfficeStatusUpdateBy" Type="int" />
+          <Property Name="OfficeStatusUpdateDate" Type="datetime" />
+          <Property Name="CaseID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReimbursmentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="DoNotSync" Type="bit" />
+          <Property Name="ShowWhse" Type="int" />
+        </EntityType>
+        <EntityType Name="FBAShipmentDetails">
+          <Key>
+            <PropertyRef Name="ShipmentDetailID" />
+          </Key>
+          <Property Name="ShipmentDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShipmentID" Type="int" />
+          <Property Name="AmzShipmentID" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sku" Type="nvarchar" MaxLength="50" />
+          <Property Name="FNSku" Type="nvarchar" MaxLength="50" />
+          <Property Name="QtyShipped" Type="int" />
+          <Property Name="QtyReceived" Type="int" />
+          <Property Name="LastUpdated" Type="datetime" />
+          <Property Name="PalletNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="FnskuLabelsPrinted" Type="int" />
+          <Property Name="BoxContentLabelsPrinted" Type="int" />
+          <Property Name="FbaLabelsPrinted" Type="int" />
+          <Property Name="QtyInCase" Type="int" />
+          <Property Name="ReleaseDate" Type="datetime" />
+          <Property Name="CaseID" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReimbursementID" Type="nvarchar" MaxLength="50" />
+          <Property Name="QtyReimbursed" Type="int" />
+          <Property Name="OfficeLastUpdated" Type="datetime" />
+          <Property Name="OfficeLastUpdatedBy" Type="int" />
+          <Property Name="AmtReimbursed" Type="money" />
+          <Property Name="PrepInfoConfirmed" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'testApp.dbo.FBAShipmentPallets' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FBAShipmentPallets">
+          <Key>
+            <PropertyRef Name="PalletNum" />
+            <PropertyRef Name="ShipmentID" />
+          </Key>
+          <Property Name="PalletNum" Type="int" Nullable="false" />
+          <Property Name="ShipmentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemCost" Type="decimal" Precision="18" Scale="6" Nullable="false" />
+          <Property Name="ItemDesc" Type="nvarchar" MaxLength="1000" />
+          <Property Name="MfgCs" Type="int" />
+          <Property Name="PackQty" Type="int" />
+          <Property Name="ModifyUser" Type="int" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="StockSource" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="OnHold" Type="bit" />
+          <Property Name="HoldQtyAlert_Below" Type="int" />
+          <Property Name="HoldQtyAlert_Above" Type="int" />
+          <Property Name="Mapping" Type="nvarchar" MaxLength="50" />
+          <Property Name="UPC" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="ItemsMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemID" Type="int" />
+          <Property Name="UOM" Type="nvarchar" MaxLength="10" />
+          <Property Name="GR" Type="int" />
+          <Property Name="AP" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyUser" Type="int" />
+          <Property Name="CreateUser" Type="int" />
+          <Property Name="IsMap" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'testApp.dbo.SkuPrepInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SkuPrepInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="PrepInstructions" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="sku" Type="nvarchar" MaxLength="255" />
+          <Property Name="asin" Type="nvarchar" MaxLength="255" />
+          <Property Name="PrepInstructions" Type="varchar" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'testApp.dbo.UserPrefix' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="UserPrefix">
+          <Key>
+            <PropertyRef Name="PREFIX" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="PREFIX" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="FName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateDate" Type="datetime" />
+          <Property Name="UpdateBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="PCName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EnvirmntUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AllowReprice" Type="bit" Nullable="false" />
+          <Property Name="AllowReplenish" Type="bit" Nullable="false" />
+          <Property Name="AllowSkuSetup" Type="bit" Nullable="false" />
+          <Property Name="AllowProducts" Type="bit" Nullable="false" />
+          <Property Name="AllowPicksheets" Type="bit" Nullable="false" />
+          <Property Name="AllowFbaCalc" Type="bit" Nullable="false" />
+          <Property Name="AllowFbaShipments" Type="bit" Nullable="false" />
+          <Property Name="AllowReports" Type="bit" Nullable="false" />
+          <Property Name="AllowAnalytics" Type="bit" Nullable="false" />
+          <Property Name="AllowAppAlerts" Type="bit" Nullable="false" />
+          <Property Name="AllowItemForcast" Type="bit" Nullable="false" />
+          <Property Name="PromptUpdates" Type="bit" Nullable="false" />
+          <Property Name="AllowPrintLabels" Type="bit" Nullable="false" />
+          <Property Name="AllowReprintLabels" Type="bit" Nullable="false" />
+          <Property Name="AllowSettlements" Type="bit" Nullable="false" />
+          <Property Name="AllowCustomerDashboard" Type="bit" Nullable="false" />
+          <Property Name="AllowPicking" Type="bit" />
+          <Property Name="PinLogin" Type="int" />
+          <Property Name="AllowListingMirror" Type="bit" Nullable="false" />
+          <Property Name="Dept" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubDept" Type="nvarchar" MaxLength="50" />
+          <Property Name="Language" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccpacUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccpacPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="AllowProductSourcing" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users_Whse">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ModifyDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'testApp.dbo.vw_FbaShipment_PcntComplete' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_FbaShipment_PcntComplete">
+          <Key>
+            <PropertyRef Name="pErcentComplete" />
+          </Key>
+          <Property Name="ShipmentID" Type="int" />
+          <Property Name="pErcentComplete" Type="decimal" Precision="38" Scale="20" Nullable="false" />
+        </EntityType>
+        <Function Name="stp_GetChoiceDropdown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ChoiceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="ChoiceDesc" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="stp_GetWarehouseUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Dept" Type="nvarchar" Mode="In" />
+          <Parameter Name="SubDept" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_GetItemsInSku" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShipDetailID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_GetNextBoxNo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShipmentID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_GetWorkingShipments" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whse" Type="bit" Mode="In" />
+          <Parameter Name="Account" Type="int" Mode="In" />
+          <Parameter Name="user" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_LabelPrintLogs" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShipmentDetailID" Type="int" Mode="In" />
+          <Parameter Name="ShipmentID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_Picking_Images" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="item" Type="nvarchar" Mode="In" />
+          <Parameter Name="uom" Type="nvarchar" Mode="In" />
+          <Parameter Name="onePerUom" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_Picking_PrintSeqPalletLabel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PickID" Type="nvarchar" Mode="In" />
+          <Parameter Name="User" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_PrintLabels_DeleteSku" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShipmentID" Type="int" Mode="In" />
+          <Parameter Name="sku" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_PrintLabels_GetConfirmInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShipDetailID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_PrintLabels_GetImages" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FnSku" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_PrintLabels_GetPallets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShipmentID" Type="int" Mode="In" />
+          <Parameter Name="ShipDetailID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_PrintLabels_PickFromPallet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShipmentID" Type="int" Mode="In" />
+          <Parameter Name="Sku" Type="nvarchar" Mode="In" />
+          <Parameter Name="User" Type="int" Mode="In" />
+          <Parameter Name="WhseUser" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pallets" Type="int" Mode="In" />
+          <Parameter Name="ExpDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_PrintLabels_PickFromPallet_AddUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShipmentID" Type="int" Mode="In" />
+          <Parameter Name="ItemNum" Type="nvarchar" Mode="In" />
+          <Parameter Name="Sku" Type="nvarchar" Mode="In" />
+          <Parameter Name="SeqPalletNo" Type="int" Mode="In" />
+          <Parameter Name="UOM" Type="nvarchar" Mode="In" />
+          <Parameter Name="QtyPicked" Type="int" Mode="In" />
+          <Parameter Name="PickedUser" Type="int" Mode="In" />
+          <Parameter Name="PickedWhseUser" Type="nvarchar" Mode="In" />
+          <Parameter Name="ExpDate" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_PrintLabels_Skus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShipmentID" Type="int" Mode="In" />
+          <Parameter Name="SearchText" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_ReprintLabels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShipmentDetailID" Type="int" Mode="In" />
+          <Parameter Name="AmzShipID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="stp_Shipments_Shipment_GetSkuCategoryList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShipmentID" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="testAppModelStoreContainer">
+          <EntitySet Name="Choice" EntityType="Self.Choice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Config" EntityType="Self.Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FbaLabelPrints" EntityType="Self.FbaLabelPrints" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FBAShipment" EntityType="Self.FBAShipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FBAShipmentDetails" EntityType="Self.FBAShipmentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemsMapping" EntityType="Self.ItemsMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users_Whse" EntityType="Self.Users_Whse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FBAShipmentPallets" EntityType="Self.FBAShipmentPallets" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FBAShipmentPallets].[PalletNum] AS [PalletNum], 
+    [FBAShipmentPallets].[ShipmentID] AS [ShipmentID]
+    FROM [dbo].[FBAShipmentPallets] AS [FBAShipmentPallets]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="SkuPrepInfo" EntityType="Self.SkuPrepInfo" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SkuPrepInfo].[ID] AS [ID], 
+    [SkuPrepInfo].[sku] AS [sku], 
+    [SkuPrepInfo].[asin] AS [asin], 
+    [SkuPrepInfo].[PrepInstructions] AS [PrepInstructions]
+    FROM [dbo].[SkuPrepInfo] AS [SkuPrepInfo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserPrefix" EntityType="Self.UserPrefix" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserPrefix].[PREFIX] AS [PREFIX], 
+    [UserPrefix].[UserName] AS [UserName], 
+    [UserPrefix].[UserID] AS [UserID]
+    FROM [dbo].[UserPrefix] AS [UserPrefix]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_FbaShipment_PcntComplete" EntityType="Self.vw_FbaShipment_PcntComplete" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_FbaShipment_PcntComplete].[ShipmentID] AS [ShipmentID], 
+    [vw_FbaShipment_PcntComplete].[pErcentComplete] AS [pErcentComplete]
+    FROM [dbo].[vw_FbaShipment_PcntComplete] AS [vw_FbaShipment_PcntComplete]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="testAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="testAppEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="stp_GetChoiceDropdown" ReturnType="Collection(String)">
+            <Parameter Name="ChoiceName" Mode="In" Type="String" />
+            <Parameter Name="ChoiceDesc" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_GetItemsInSku" ReturnType="Collection(testAppModel.stp_Shipments_GetItemsInSku_Result)">
+          <Parameter Name="ShipDetailID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_GetNextBoxNo" ReturnType="Collection(Int32)">
+          <Parameter Name="ShipmentID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_LabelPrintLogs" ReturnType="Collection(testAppModel.stp_Shipments_LabelPrintLogs_Result)">
+            <Parameter Name="ShipmentDetailID" Mode="In" Type="Int32" />
+            <Parameter Name="ShipmentID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_Picking_Images" ReturnType="Collection(testAppModel.stp_Shipments_Picking_Images_Result)">
+            <Parameter Name="item" Mode="In" Type="String" />
+            <Parameter Name="uom" Mode="In" Type="String" />
+            <Parameter Name="onePerUom" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_Picking_PrintSeqPalletLabel">
+            <Parameter Name="PickID" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_PrintLabels_GetConfirmInfo" ReturnType="Collection(testAppModel.stp_Shipments_PrintLabels_GetConfirmInfo_Result)">
+          <Parameter Name="ShipDetailID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_PrintLabels_GetImages" ReturnType="Collection(testAppModel.stp_Shipments_PrintLabels_GetImages_Result)">
+          <Parameter Name="FnSku" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_PrintLabels_GetPallets" ReturnType="Collection(String)">
+            <Parameter Name="ShipmentID" Mode="In" Type="Int32" />
+            <Parameter Name="ShipDetailID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_PrintLabels_PickFromPallet" ReturnType="Collection(Int32)">
+            <Parameter Name="ShipmentID" Mode="In" Type="Int32" />
+            <Parameter Name="Sku" Mode="In" Type="String" />
+            <Parameter Name="User" Mode="In" Type="Int32" />
+            <Parameter Name="WhseUser" Mode="In" Type="String" />
+            <Parameter Name="Pallets" Mode="In" Type="Int32" />
+            <Parameter Name="ExpDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_PrintLabels_PickFromPallet_AddUpdate">
+            <Parameter Name="ShipmentID" Mode="In" Type="Int32" />
+            <Parameter Name="ItemNum" Mode="In" Type="String" />
+            <Parameter Name="Sku" Mode="In" Type="String" />
+            <Parameter Name="SeqPalletNo" Mode="In" Type="Int32" />
+            <Parameter Name="UOM" Mode="In" Type="String" />
+            <Parameter Name="QtyPicked" Mode="In" Type="Int32" />
+            <Parameter Name="PickedUser" Mode="In" Type="Int32" />
+            <Parameter Name="PickedWhseUser" Mode="In" Type="String" />
+            <Parameter Name="ExpDate" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_PrintLabels_Skus" ReturnType="Collection(testAppModel.stp_Shipments_PrintLabels_Skus_Result)">
+            <Parameter Name="ShipmentID" Mode="In" Type="Int32" />
+            <Parameter Name="SearchText" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_ReprintLabels" ReturnType="Collection(testAppModel.stp_Shipments_ReprintLabels_Result)">
+            <Parameter Name="ShipmentDetailID" Mode="In" Type="Int32" />
+            <Parameter Name="AmzShipID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_Shipment_GetSkuCategoryList" ReturnType="Collection(String)">
+          <Parameter Name="ShipmentID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="stp_GetWarehouseUsers" ReturnType="Collection(String)">
+            <Parameter Name="Dept" Mode="In" Type="String" />
+            <Parameter Name="SubDept" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Choices" EntityType="testAppModel.Choice" />
+          <EntitySet Name="Configs" EntityType="testAppModel.Config" />
+          <EntitySet Name="FbaLabelPrints" EntityType="testAppModel.FbaLabelPrint" />
+          <EntitySet Name="FBAShipments" EntityType="testAppModel.FBAShipment" />
+          <EntitySet Name="FBAShipmentDetails" EntityType="testAppModel.FBAShipmentDetail" />
+          <EntitySet Name="Items" EntityType="testAppModel.Item" />
+          <EntitySet Name="ItemsMappings" EntityType="testAppModel.ItemsMapping" />
+          <EntitySet Name="Users" EntityType="testAppModel.User" />
+          <EntitySet Name="Users_Whse" EntityType="testAppModel.Users_Whse" />
+          <EntitySet Name="FBAShipmentPallets" EntityType="testAppModel.FBAShipmentPallet" />
+          <EntitySet Name="SkuPrepInfoes" EntityType="testAppModel.SkuPrepInfo" />
+          <EntitySet Name="UserPrefixes" EntityType="testAppModel.UserPrefix" />
+          <EntitySet Name="vw_FbaShipment_PcntComplete" EntityType="testAppModel.vw_FbaShipment_PcntComplete" />
+          <FunctionImport Name="stp_Shipments_PrintLabels_DeleteSku">
+            <Parameter Name="ShipmentID" Mode="In" Type="Int32" />
+            <Parameter Name="sku" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="stp_Shipments_GetWorkingShipments" ReturnType="Collection(testAppModel.stp_Shipments_GetWorkingShipments_Result)">
+            <Parameter Name="whse" Mode="In" Type="Boolean" />
+            <Parameter Name="Account" Mode="In" Type="Int32" />
+            <Parameter Name="user" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="stp_Shipments_GetItemsInSku_Result">
+          <Property Type="Int32" Name="ItemID" Nullable="true" />
+          <Property Type="String" Name="ItemNumber" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="EA" Nullable="true" />
+          <Property Type="Double" Name="PK" Nullable="true" />
+          <Property Type="Int32" Name="MFG_CS" Nullable="true" />
+          <Property Type="Double" Name="divCases" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="stp_Shipments_LabelPrintLogs_Result">
+          <Property Type="String" Name="Sku" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="ShipmentID" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ShipmentDetailID" Nullable="true" />
+          <Property Type="String" Name="LabelType" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="LabelsPrinted" Nullable="false" />
+          <Property Type="Int32" Name="BoxNoStart" Nullable="false" />
+          <Property Type="Int32" Name="BoxNoEnd" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreateUser" Nullable="true" />
+          <Property Type="String" Name="WhseUser" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PalletNo" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsCustom" Nullable="true" />
+          <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="stp_Shipments_Picking_Images_Result">
+          <Property Type="String" Name="img" Nullable="false" MaxLength="33" />
+          <Property Type="String" Name="uom" Nullable="false" MaxLength="2" />
+        </ComplexType>
+        <ComplexType Name="stp_Shipments_PrintLabels_GetConfirmInfo_Result">
+          <Property Type="String" Name="Sku" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AmzShipmentID" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="PrepInfoConfirmed" Nullable="true" />
+          <Property Type="String" Name="PrepType" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="PrepSize" Nullable="false" MaxLength="1" />
+          <Property Type="Int32" Name="BoxType" Nullable="true" />
+          <Property Type="String" Name="PrepInstructions" Nullable="true" MaxLength="25" />
+          <Property Type="Boolean" Name="SoldAsSetLabels" Nullable="true" />
+          <Property Type="Int32" Name="SoldAsSetPerItem" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="stp_Shipments_PrintLabels_GetImages_Result">
+          <Property Type="String" Name="ImagePath" Nullable="false" MaxLength="33" />
+          <Property Type="String" Name="FnSku" Nullable="false" MaxLength="2" />
+        </ComplexType>
+        <ComplexType Name="stp_Shipments_PrintLabels_Skus_Result">
+          <Property Type="Int32" Name="ShipmentDetailID" Nullable="false" />
+          <Property Type="Int32" Name="ShipmentID" Nullable="true" />
+          <Property Type="String" Name="Sku" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FNSku" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="FBA_Per_Case" Nullable="true" />
+          <Property Type="Int32" Name="FBALablelsNeed" Nullable="true" />
+          <Property Type="Int32" Name="FBALabelsPrinted" Nullable="true" />
+          <Property Type="Int32" Name="BoxContentLablelsNeed" Nullable="true" />
+          <Property Type="Int32" Name="BoxContentLabelsPrinted" Nullable="true" />
+          <Property Type="Int32" Name="PartialCase" Nullable="false" />
+          <Property Type="Int32" Name="FnskuLablelsNeed" Nullable="true" />
+          <Property Type="Int32" Name="FnskuLabelsPrinted" Nullable="true" />
+          <Property Type="String" Name="MediumImage" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="SkuCategory" Nullable="true" MaxLength="12" />
+          <Property Type="Int32" Name="totalNeed" Nullable="true" />
+          <Property Type="Int32" Name="TotalPrinted" Nullable="true" />
+          <Property Type="Int32" Name="QtyShipped" Nullable="true" />
+          <Property Type="Int32" Name="QtyReceived" Nullable="true" />
+          <Property Type="Int32" Name="QtyMissing" Nullable="true" />
+          <Property Type="Int32" Name="QtyReimbursed" Nullable="true" />
+          <Property Type="String" Name="ReimbursementID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CaseID" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="AmtReimbursed" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="AmtShipped" Nullable="true" Precision="19" />
+          <Property Type="Decimal" Name="AmtMissing" Nullable="true" Precision="19" />
+          <Property Type="String" Name="ASIN" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="splitIndex" Nullable="false" MaxLength="1" />
+          <Property Type="Int32" Name="FullyPicked" Nullable="false" />
+          <Property Type="Int32" Name="PrepInfoConfirmed" Nullable="false" />
+          <Property Type="Int32" Name="lblsComplete" Nullable="false" />
+          <Property Type="String" Name="ExpDate" Nullable="false" MaxLength="10" />
+          <Property Type="Decimal" Name="pErcentComplete" Nullable="false" Precision="38" Scale="20" />
+        </ComplexType>
+        <ComplexType Name="stp_Shipments_ReprintLabels_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="ShipmentID" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="ShipmentDetailID" Nullable="true" />
+          <Property Type="String" Name="LabelType" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="LabelsPrinted" Nullable="false" />
+          <Property Type="Int32" Name="BoxNoStart" Nullable="false" />
+          <Property Type="Int32" Name="BoxNoEnd" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreateUser" Nullable="true" />
+          <Property Type="String" Name="WhseUser" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="PalletNo" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsCustom" Nullable="true" />
+          <Property Type="String" Name="Sku" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="stp_Shipments_Shipment_GetSkuCategoryList_Result">
+          <Property Type="String" Name="SkuCategory" Nullable="true" MaxLength="12" />
+        </ComplexType>
+        <EntityType Name="Choice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChoiceID" Type="Int32" Nullable="false" />
+          <Property Name="ChoiceName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChoiceDesc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ChoiceValue" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ChoiceIndex" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConfigName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ConfigValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConfigType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfigUser" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdatedBy" Type="Int32" />
+          <Property Name="HasOnlyOne" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="FbaLabelPrint">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShipmentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipmentDetailID" Type="Int32" />
+          <Property Name="LabelType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LabelsPrinted" Type="Int32" Nullable="false" />
+          <Property Name="BoxNoStart" Type="Int32" Nullable="false" />
+          <Property Name="BoxNoEnd" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="WhseUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PalletNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsCustom" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="FBAShipment">
+          <Key>
+            <PropertyRef Name="ShipmentID" />
+          </Key>
+          <Property Name="ShipmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AmzShipmentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipmentDate" Type="DateTime" Precision="3" />
+          <Property Name="ShipmentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LabelPrepType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DestFulfmtCenterID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipFromAddress1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipFromAddress2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipFromCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipFromState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipFromPostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipFromDistrictCounty" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipFromCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShipFromName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyUser" Type="Int32" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="WhseStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AreCasesRequired" Type="Boolean" Nullable="false" />
+          <Property Name="BoxContentSource" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WhseStatusUpdateBy" Type="Int32" />
+          <Property Name="WhseStatusUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="OfficeStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeStatusUpdateBy" Type="Int32" />
+          <Property Name="OfficeStatusUpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="CaseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReimbursmentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DoNotSync" Type="Boolean" />
+          <Property Name="ShowWhse" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FBAShipmentDetail">
+          <Key>
+            <PropertyRef Name="ShipmentDetailID" />
+          </Key>
+          <Property Name="ShipmentDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShipmentID" Type="Int32" />
+          <Property Name="AmzShipmentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sku" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FNSku" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QtyShipped" Type="Int32" />
+          <Property Name="QtyReceived" Type="Int32" />
+          <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="PalletNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FnskuLabelsPrinted" Type="Int32" />
+          <Property Name="BoxContentLabelsPrinted" Type="Int32" />
+          <Property Name="FbaLabelsPrinted" Type="Int32" />
+          <Property Name="QtyInCase" Type="Int32" />
+          <Property Name="ReleaseDate" Type="DateTime" Precision="3" />
+          <Property Name="CaseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReimbursementID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="QtyReimbursed" Type="Int32" />
+          <Property Name="OfficeLastUpdated" Type="DateTime" Precision="3" />
+          <Property Name="OfficeLastUpdatedBy" Type="Int32" />
+          <Property Name="AmtReimbursed" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PrepInfoConfirmed" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCost" Type="Decimal" Nullable="false" Precision="18" Scale="6" />
+          <Property Name="ItemDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="MfgCs" Type="Int32" />
+          <Property Name="PackQty" Type="Int32" />
+          <Property Name="ModifyUser" Type="Int32" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="StockSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="OnHold" Type="Boolean" />
+          <Property Name="HoldQtyAlert_Below" Type="Int32" />
+          <Property Name="HoldQtyAlert_Above" Type="Int32" />
+          <Property Name="Mapping" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UPC" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ItemsMapping">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemID" Type="Int32" />
+          <Property Name="UOM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="GR" Type="Int32" />
+          <Property Name="AP" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyUser" Type="Int32" />
+          <Property Name="CreateUser" Type="Int32" />
+          <Property Name="IsMap" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="PCName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EnvirmntUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AllowReprice" Type="Boolean" Nullable="false" />
+          <Property Name="AllowReplenish" Type="Boolean" Nullable="false" />
+          <Property Name="AllowSkuSetup" Type="Boolean" Nullable="false" />
+          <Property Name="AllowProducts" Type="Boolean" Nullable="false" />
+          <Property Name="AllowPicksheets" Type="Boolean" Nullable="false" />
+          <Property Name="AllowFbaCalc" Type="Boolean" Nullable="false" />
+          <Property Name="AllowFbaShipments" Type="Boolean" Nullable="false" />
+          <Property Name="AllowReports" Type="Boolean" Nullable="false" />
+          <Property Name="AllowAnalytics" Type="Boolean" Nullable="false" />
+          <Property Name="AllowAppAlerts" Type="Boolean" Nullable="false" />
+          <Property Name="AllowItemForcast" Type="Boolean" Nullable="false" />
+          <Property Name="PromptUpdates" Type="Boolean" Nullable="false" />
+          <Property Name="AllowPrintLabels" Type="Boolean" Nullable="false" />
+          <Property Name="AllowReprintLabels" Type="Boolean" Nullable="false" />
+          <Property Name="AllowSettlements" Type="Boolean" Nullable="false" />
+          <Property Name="AllowCustomerDashboard" Type="Boolean" Nullable="false" />
+          <Property Name="AllowPicking" Type="Boolean" />
+          <Property Name="PinLogin" Type="Int32" />
+          <Property Name="AllowListingMirror" Type="Boolean" Nullable="false" />
+          <Property Name="Dept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubDept" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Language" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccpacUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccpacPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AllowProductSourcing" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Users_Whse">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="FBAShipmentPallet">
+          <Key>
+            <PropertyRef Name="PalletNum" />
+            <PropertyRef Name="ShipmentID" />
+          </Key>
+          <Property Name="PalletNum" Type="Int32" Nullable="false" />
+          <Property Name="ShipmentID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SkuPrepInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="PrepInstructions" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="sku" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="asin" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PrepInstructions" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserPrefix">
+          <Key>
+            <PropertyRef Name="PREFIX" />
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="PREFIX" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_FbaShipment_PcntComplete">
+          <Key>
+            <PropertyRef Name="pErcentComplete" />
+          </Key>
+          <Property Name="ShipmentID" Type="Int32" />
+          <Property Name="pErcentComplete" Type="Decimal" Nullable="false" Precision="38" Scale="20" />
+        </EntityType>
+        <ComplexType Name="stp_Shipments_GetWorkingShipments_Result">
+          <Property Type="Int32" Name="ShipmentID" Nullable="false" />
+          <Property Type="String" Name="AmzShipmentID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShipmentName" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="ShipmentDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ShipmentStatus" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LabelPrepType" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DestFulfmtCenterID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShipFromAddress1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShipFromAddress2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShipFromCity" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShipFromState" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShipFromPostalCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShipFromDistrictCounty" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShipFromCountry" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ShipFromName" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="CreateUser" Nullable="true" />
+          <Property Type="DateTime" Name="ModifyDate" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="ModifyUser" Nullable="true" />
+          <Property Type="DateTime" Name="LastUpdated" Nullable="true" Precision="23" />
+          <Property Type="String" Name="WhseStatus" Nullable="true" MaxLength="10" />
+          <Property Type="Boolean" Name="AreCasesRequired" Nullable="false" />
+          <Property Type="String" Name="BoxContentSource" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="WhseStatusUpdateBy" Nullable="true" />
+          <Property Type="DateTime" Name="WhseStatusUpdateDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="OfficeStatus" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="OfficeStatusUpdateBy" Nullable="true" />
+          <Property Type="DateTime" Name="OfficeStatusUpdateDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="CaseID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ReimbursmentID" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="DoNotSync" Nullable="true" />
+          <Property Type="Int32" Name="ShowWhse" Nullable="true" />
+          <Property Type="Decimal" Name="PercentComplete" Nullable="true" Precision="38" Scale="20" />
+          <Property Type="Int32" Name="cntBoxes" Nullable="true" />
+          <Property Type="Int32" Name="CntPallets" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="testAppModelStoreContainer" CdmEntityContainer="testAppEntities">
+          <FunctionImportMapping FunctionImportName="stp_GetChoiceDropdown" FunctionName="testAppModel.Store.stp_GetChoiceDropdown" />
+          <FunctionImportMapping FunctionImportName="stp_Shipments_GetItemsInSku" FunctionName="testAppModel.Store.stp_Shipments_GetItemsInSku">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="testAppModel.stp_Shipments_GetItemsInSku_Result">
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+                <ScalarProperty Name="EA" ColumnName="EA" />
+                <ScalarProperty Name="PK" ColumnName="PK" />
+                <ScalarProperty Name="MFG_CS" ColumnName="MFG_CS" />
+                <ScalarProperty Name="divCases" ColumnName="divCases" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stp_Shipments_GetNextBoxNo" FunctionName="testAppModel.Store.stp_Shipments_GetNextBoxNo" />
+          <FunctionImportMapping FunctionImportName="stp_Shipments_LabelPrintLogs" FunctionName="testAppModel.Store.stp_Shipments_LabelPrintLogs">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="testAppModel.stp_Shipments_LabelPrintLogs_Result">
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ShipmentID" ColumnName="ShipmentID" />
+                <ScalarProperty Name="ShipmentDetailID" ColumnName="ShipmentDetailID" />
+                <ScalarProperty Name="LabelType" ColumnName="LabelType" />
+                <ScalarProperty Name="LabelsPrinted" ColumnName="LabelsPrinted" />
+                <ScalarProperty Name="BoxNoStart" ColumnName="BoxNoStart" />
+                <ScalarProperty Name="BoxNoEnd" ColumnName="BoxNoEnd" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="WhseUser" ColumnName="WhseUser" />
+                <ScalarProperty Name="PalletNo" ColumnName="PalletNo" />
+                <ScalarProperty Name="IsCustom" ColumnName="IsCustom" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stp_Shipments_Picking_Images" FunctionName="testAppModel.Store.stp_Shipments_Picking_Images">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="testAppModel.stp_Shipments_Picking_Images_Result">
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="uom" ColumnName="uom" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stp_Shipments_Picking_PrintSeqPalletLabel" FunctionName="testAppModel.Store.stp_Shipments_Picking_PrintSeqPalletLabel" />
+          <FunctionImportMapping FunctionImportName="stp_Shipments_PrintLabels_GetConfirmInfo" FunctionName="testAppModel.Store.stp_Shipments_PrintLabels_GetConfirmInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="testAppModel.stp_Shipments_PrintLabels_GetConfirmInfo_Result">
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+                <ScalarProperty Name="AmzShipmentID" ColumnName="AmzShipmentID" />
+                <ScalarProperty Name="PrepInfoConfirmed" ColumnName="PrepInfoConfirmed" />
+                <ScalarProperty Name="PrepType" ColumnName="PrepType" />
+                <ScalarProperty Name="PrepSize" ColumnName="PrepSize" />
+                <ScalarProperty Name="BoxType" ColumnName="BoxType" />
+                <ScalarProperty Name="PrepInstructions" ColumnName="PrepInstructions" />
+                <ScalarProperty Name="SoldAsSetLabels" ColumnName="SoldAsSetLabels" />
+                <ScalarProperty Name="SoldAsSetPerItem" ColumnName="SoldAsSetPerItem" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stp_Shipments_PrintLabels_GetImages" FunctionName="testAppModel.Store.stp_Shipments_PrintLabels_GetImages">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="testAppModel.stp_Shipments_PrintLabels_GetImages_Result">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="FnSku" ColumnName="FnSku" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stp_Shipments_PrintLabels_GetPallets" FunctionName="testAppModel.Store.stp_Shipments_PrintLabels_GetPallets" />
+          <FunctionImportMapping FunctionImportName="stp_Shipments_PrintLabels_PickFromPallet" FunctionName="testAppModel.Store.stp_Shipments_PrintLabels_PickFromPallet" />
+          <FunctionImportMapping FunctionImportName="stp_Shipments_PrintLabels_PickFromPallet_AddUpdate" FunctionName="testAppModel.Store.stp_Shipments_PrintLabels_PickFromPallet_AddUpdate" />
+          <FunctionImportMapping FunctionImportName="stp_Shipments_PrintLabels_Skus" FunctionName="testAppModel.Store.stp_Shipments_PrintLabels_Skus">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="testAppModel.stp_Shipments_PrintLabels_Skus_Result">
+                <ScalarProperty Name="ShipmentDetailID" ColumnName="ShipmentDetailID" />
+                <ScalarProperty Name="ShipmentID" ColumnName="ShipmentID" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+                <ScalarProperty Name="FNSku" ColumnName="FNSku" />
+                <ScalarProperty Name="FBA_Per_Case" ColumnName="FBA_Per_Case" />
+                <ScalarProperty Name="FBALablelsNeed" ColumnName="FBALablelsNeed" />
+                <ScalarProperty Name="FBALabelsPrinted" ColumnName="FBALabelsPrinted" />
+                <ScalarProperty Name="BoxContentLablelsNeed" ColumnName="BoxContentLablelsNeed" />
+                <ScalarProperty Name="BoxContentLabelsPrinted" ColumnName="BoxContentLabelsPrinted" />
+                <ScalarProperty Name="PartialCase" ColumnName="PartialCase" />
+                <ScalarProperty Name="FnskuLablelsNeed" ColumnName="FnskuLablelsNeed" />
+                <ScalarProperty Name="FnskuLabelsPrinted" ColumnName="FnskuLabelsPrinted" />
+                <ScalarProperty Name="MediumImage" ColumnName="MediumImage" />
+                <ScalarProperty Name="SkuCategory" ColumnName="SkuCategory" />
+                <ScalarProperty Name="totalNeed" ColumnName="totalNeed" />
+                <ScalarProperty Name="TotalPrinted" ColumnName="TotalPrinted" />
+                <ScalarProperty Name="QtyShipped" ColumnName="QtyShipped" />
+                <ScalarProperty Name="QtyReceived" ColumnName="QtyReceived" />
+                <ScalarProperty Name="QtyMissing" ColumnName="QtyMissing" />
+                <ScalarProperty Name="QtyReimbursed" ColumnName="QtyReimbursed" />
+                <ScalarProperty Name="ReimbursementID" ColumnName="ReimbursementID" />
+                <ScalarProperty Name="CaseID" ColumnName="CaseID" />
+                <ScalarProperty Name="AmtReimbursed" ColumnName="AmtReimbursed" />
+                <ScalarProperty Name="AmtShipped" ColumnName="AmtShipped" />
+                <ScalarProperty Name="AmtMissing" ColumnName="AmtMissing" />
+                <ScalarProperty Name="ASIN" ColumnName="ASIN" />
+                <ScalarProperty Name="splitIndex" ColumnName="splitIndex" />
+                <ScalarProperty Name="FullyPicked" ColumnName="FullyPicked" />
+                <ScalarProperty Name="PrepInfoConfirmed" ColumnName="PrepInfoConfirmed" />
+                <ScalarProperty Name="lblsComplete" ColumnName="lblsComplete" />
+                <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+                <ScalarProperty Name="pErcentComplete" ColumnName="pErcentComplete" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stp_Shipments_ReprintLabels" FunctionName="testAppModel.Store.stp_Shipments_ReprintLabels">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="testAppModel.stp_Shipments_ReprintLabels_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ShipmentID" ColumnName="ShipmentID" />
+                <ScalarProperty Name="ShipmentDetailID" ColumnName="ShipmentDetailID" />
+                <ScalarProperty Name="LabelType" ColumnName="LabelType" />
+                <ScalarProperty Name="LabelsPrinted" ColumnName="LabelsPrinted" />
+                <ScalarProperty Name="BoxNoStart" ColumnName="BoxNoStart" />
+                <ScalarProperty Name="BoxNoEnd" ColumnName="BoxNoEnd" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="WhseUser" ColumnName="WhseUser" />
+                <ScalarProperty Name="PalletNo" ColumnName="PalletNo" />
+                <ScalarProperty Name="IsCustom" ColumnName="IsCustom" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="stp_Shipments_Shipment_GetSkuCategoryList" FunctionName="testAppModel.Store.stp_Shipments_Shipment_GetSkuCategoryList" />
+          <FunctionImportMapping FunctionImportName="stp_GetWarehouseUsers" FunctionName="testAppModel.Store.stp_GetWarehouseUsers" />
+          <EntitySetMapping Name="Choices">
+            <EntityTypeMapping TypeName="testAppModel.Choice">
+              <MappingFragment StoreEntitySet="Choice">
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ChoiceIndex" ColumnName="ChoiceIndex" />
+                <ScalarProperty Name="ChoiceValue" ColumnName="ChoiceValue" />
+                <ScalarProperty Name="ChoiceDesc" ColumnName="ChoiceDesc" />
+                <ScalarProperty Name="ChoiceName" ColumnName="ChoiceName" />
+                <ScalarProperty Name="ChoiceID" ColumnName="ChoiceID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configs">
+            <EntityTypeMapping TypeName="testAppModel.Config">
+              <MappingFragment StoreEntitySet="Config">
+                <ScalarProperty Name="HasOnlyOne" ColumnName="HasOnlyOne" />
+                <ScalarProperty Name="LastUpdatedBy" ColumnName="LastUpdatedBy" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ConfigUser" ColumnName="ConfigUser" />
+                <ScalarProperty Name="ConfigType" ColumnName="ConfigType" />
+                <ScalarProperty Name="ConfigValue" ColumnName="ConfigValue" />
+                <ScalarProperty Name="ConfigName" ColumnName="ConfigName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FbaLabelPrints">
+            <EntityTypeMapping TypeName="testAppModel.FbaLabelPrint">
+              <MappingFragment StoreEntitySet="FbaLabelPrints">
+                <ScalarProperty Name="IsCustom" ColumnName="IsCustom" />
+                <ScalarProperty Name="PalletNo" ColumnName="PalletNo" />
+                <ScalarProperty Name="WhseUser" ColumnName="WhseUser" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="BoxNoEnd" ColumnName="BoxNoEnd" />
+                <ScalarProperty Name="BoxNoStart" ColumnName="BoxNoStart" />
+                <ScalarProperty Name="LabelsPrinted" ColumnName="LabelsPrinted" />
+                <ScalarProperty Name="LabelType" ColumnName="LabelType" />
+                <ScalarProperty Name="ShipmentDetailID" ColumnName="ShipmentDetailID" />
+                <ScalarProperty Name="ShipmentID" ColumnName="ShipmentID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FBAShipments">
+            <EntityTypeMapping TypeName="testAppModel.FBAShipment">
+              <MappingFragment StoreEntitySet="FBAShipment">
+                <ScalarProperty Name="ShowWhse" ColumnName="ShowWhse" />
+                <ScalarProperty Name="DoNotSync" ColumnName="DoNotSync" />
+                <ScalarProperty Name="ReimbursmentID" ColumnName="ReimbursmentID" />
+                <ScalarProperty Name="CaseID" ColumnName="CaseID" />
+                <ScalarProperty Name="OfficeStatusUpdateDate" ColumnName="OfficeStatusUpdateDate" />
+                <ScalarProperty Name="OfficeStatusUpdateBy" ColumnName="OfficeStatusUpdateBy" />
+                <ScalarProperty Name="OfficeStatus" ColumnName="OfficeStatus" />
+                <ScalarProperty Name="WhseStatusUpdateDate" ColumnName="WhseStatusUpdateDate" />
+                <ScalarProperty Name="WhseStatusUpdateBy" ColumnName="WhseStatusUpdateBy" />
+                <ScalarProperty Name="BoxContentSource" ColumnName="BoxContentSource" />
+                <ScalarProperty Name="AreCasesRequired" ColumnName="AreCasesRequired" />
+                <ScalarProperty Name="WhseStatus" ColumnName="WhseStatus" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="ModifyUser" ColumnName="ModifyUser" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ShipFromName" ColumnName="ShipFromName" />
+                <ScalarProperty Name="ShipFromCountry" ColumnName="ShipFromCountry" />
+                <ScalarProperty Name="ShipFromDistrictCounty" ColumnName="ShipFromDistrictCounty" />
+                <ScalarProperty Name="ShipFromPostalCode" ColumnName="ShipFromPostalCode" />
+                <ScalarProperty Name="ShipFromState" ColumnName="ShipFromState" />
+                <ScalarProperty Name="ShipFromCity" ColumnName="ShipFromCity" />
+                <ScalarProperty Name="ShipFromAddress2" ColumnName="ShipFromAddress2" />
+                <ScalarProperty Name="ShipFromAddress1" ColumnName="ShipFromAddress1" />
+                <ScalarProperty Name="DestFulfmtCenterID" ColumnName="DestFulfmtCenterID" />
+                <ScalarProperty Name="LabelPrepType" ColumnName="LabelPrepType" />
+                <ScalarProperty Name="ShipmentStatus" ColumnName="ShipmentStatus" />
+                <ScalarProperty Name="ShipmentDate" ColumnName="ShipmentDate" />
+                <ScalarProperty Name="ShipmentName" ColumnName="ShipmentName" />
+                <ScalarProperty Name="AmzShipmentID" ColumnName="AmzShipmentID" />
+                <ScalarProperty Name="ShipmentID" ColumnName="ShipmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FBAShipmentDetails">
+            <EntityTypeMapping TypeName="testAppModel.FBAShipmentDetail">
+              <MappingFragment StoreEntitySet="FBAShipmentDetails">
+                <ScalarProperty Name="PrepInfoConfirmed" ColumnName="PrepInfoConfirmed" />
+                <ScalarProperty Name="AmtReimbursed" ColumnName="AmtReimbursed" />
+                <ScalarProperty Name="OfficeLastUpdatedBy" ColumnName="OfficeLastUpdatedBy" />
+                <ScalarProperty Name="OfficeLastUpdated" ColumnName="OfficeLastUpdated" />
+                <ScalarProperty Name="QtyReimbursed" ColumnName="QtyReimbursed" />
+                <ScalarProperty Name="ReimbursementID" ColumnName="ReimbursementID" />
+                <ScalarProperty Name="CaseID" ColumnName="CaseID" />
+                <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+                <ScalarProperty Name="QtyInCase" ColumnName="QtyInCase" />
+                <ScalarProperty Name="FbaLabelsPrinted" ColumnName="FbaLabelsPrinted" />
+                <ScalarProperty Name="BoxContentLabelsPrinted" ColumnName="BoxContentLabelsPrinted" />
+                <ScalarProperty Name="FnskuLabelsPrinted" ColumnName="FnskuLabelsPrinted" />
+                <ScalarProperty Name="PalletNo" ColumnName="PalletNo" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="QtyReceived" ColumnName="QtyReceived" />
+                <ScalarProperty Name="QtyShipped" ColumnName="QtyShipped" />
+                <ScalarProperty Name="FNSku" ColumnName="FNSku" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+                <ScalarProperty Name="AmzShipmentID" ColumnName="AmzShipmentID" />
+                <ScalarProperty Name="ShipmentID" ColumnName="ShipmentID" />
+                <ScalarProperty Name="ShipmentDetailID" ColumnName="ShipmentDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="testAppModel.Item">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="UPC" ColumnName="UPC" />
+                <ScalarProperty Name="Mapping" ColumnName="Mapping" />
+                <ScalarProperty Name="HoldQtyAlert_Above" ColumnName="HoldQtyAlert_Above" />
+                <ScalarProperty Name="HoldQtyAlert_Below" ColumnName="HoldQtyAlert_Below" />
+                <ScalarProperty Name="OnHold" ColumnName="OnHold" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="StockSource" ColumnName="StockSource" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUser" ColumnName="ModifyUser" />
+                <ScalarProperty Name="PackQty" ColumnName="PackQty" />
+                <ScalarProperty Name="MfgCs" ColumnName="MfgCs" />
+                <ScalarProperty Name="ItemDesc" ColumnName="ItemDesc" />
+                <ScalarProperty Name="ItemCost" ColumnName="ItemCost" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ItemNumber" ColumnName="ItemNumber" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemsMappings">
+            <EntityTypeMapping TypeName="testAppModel.ItemsMapping">
+              <MappingFragment StoreEntitySet="ItemsMapping">
+                <ScalarProperty Name="IsMap" ColumnName="IsMap" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="ModifyUser" ColumnName="ModifyUser" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="AP" ColumnName="AP" />
+                <ScalarProperty Name="GR" ColumnName="GR" />
+                <ScalarProperty Name="UOM" ColumnName="UOM" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="testAppModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="AllowProductSourcing" ColumnName="AllowProductSourcing" />
+                <ScalarProperty Name="AccpacPassword" ColumnName="AccpacPassword" />
+                <ScalarProperty Name="AccpacUser" ColumnName="AccpacUser" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="SubDept" ColumnName="SubDept" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="AllowListingMirror" ColumnName="AllowListingMirror" />
+                <ScalarProperty Name="PinLogin" ColumnName="PinLogin" />
+                <ScalarProperty Name="AllowPicking" ColumnName="AllowPicking" />
+                <ScalarProperty Name="AllowCustomerDashboard" ColumnName="AllowCustomerDashboard" />
+                <ScalarProperty Name="AllowSettlements" ColumnName="AllowSettlements" />
+                <ScalarProperty Name="AllowReprintLabels" ColumnName="AllowReprintLabels" />
+                <ScalarProperty Name="AllowPrintLabels" ColumnName="AllowPrintLabels" />
+                <ScalarProperty Name="PromptUpdates" ColumnName="PromptUpdates" />
+                <ScalarProperty Name="AllowItemForcast" ColumnName="AllowItemForcast" />
+                <ScalarProperty Name="AllowAppAlerts" ColumnName="AllowAppAlerts" />
+                <ScalarProperty Name="AllowAnalytics" ColumnName="AllowAnalytics" />
+                <ScalarProperty Name="AllowReports" ColumnName="AllowReports" />
+                <ScalarProperty Name="AllowFbaShipments" ColumnName="AllowFbaShipments" />
+                <ScalarProperty Name="AllowFbaCalc" ColumnName="AllowFbaCalc" />
+                <ScalarProperty Name="AllowPicksheets" ColumnName="AllowPicksheets" />
+                <ScalarProperty Name="AllowProducts" ColumnName="AllowProducts" />
+                <ScalarProperty Name="AllowSkuSetup" ColumnName="AllowSkuSetup" />
+                <ScalarProperty Name="AllowReplenish" ColumnName="AllowReplenish" />
+                <ScalarProperty Name="AllowReprice" ColumnName="AllowReprice" />
+                <ScalarProperty Name="EnvirmntUserName" ColumnName="EnvirmntUserName" />
+                <ScalarProperty Name="PCName" ColumnName="PCName" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users_Whse">
+            <EntityTypeMapping TypeName="testAppModel.Users_Whse">
+              <MappingFragment StoreEntitySet="Users_Whse">
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FBAShipmentPallets">
+            <EntityTypeMapping TypeName="testAppModel.FBAShipmentPallet">
+              <MappingFragment StoreEntitySet="FBAShipmentPallets">
+                <ScalarProperty Name="ShipmentID" ColumnName="ShipmentID" />
+                <ScalarProperty Name="PalletNum" ColumnName="PalletNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SkuPrepInfoes">
+            <EntityTypeMapping TypeName="testAppModel.SkuPrepInfo">
+              <MappingFragment StoreEntitySet="SkuPrepInfo">
+                <ScalarProperty Name="PrepInstructions" ColumnName="PrepInstructions" />
+                <ScalarProperty Name="asin" ColumnName="asin" />
+                <ScalarProperty Name="sku" ColumnName="sku" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPrefixes">
+            <EntityTypeMapping TypeName="testAppModel.UserPrefix">
+              <MappingFragment StoreEntitySet="UserPrefix">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PREFIX" ColumnName="PREFIX" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_FbaShipment_PcntComplete">
+            <EntityTypeMapping TypeName="testAppModel.vw_FbaShipment_PcntComplete">
+              <MappingFragment StoreEntitySet="vw_FbaShipment_PcntComplete">
+                <ScalarProperty Name="pErcentComplete" ColumnName="pErcentComplete" />
+                <ScalarProperty Name="ShipmentID" ColumnName="ShipmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="stp_Shipments_PrintLabels_DeleteSku" FunctionName="testAppModel.Store.stp_Shipments_PrintLabels_DeleteSku" />
+          <FunctionImportMapping FunctionImportName="stp_Shipments_GetWorkingShipments" FunctionName="testAppModel.Store.stp_Shipments_GetWorkingShipments">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="testAppModel.stp_Shipments_GetWorkingShipments_Result">
+                <ScalarProperty Name="ShipmentID" ColumnName="ShipmentID" />
+                <ScalarProperty Name="AmzShipmentID" ColumnName="AmzShipmentID" />
+                <ScalarProperty Name="ShipmentName" ColumnName="ShipmentName" />
+                <ScalarProperty Name="ShipmentDate" ColumnName="ShipmentDate" />
+                <ScalarProperty Name="ShipmentStatus" ColumnName="ShipmentStatus" />
+                <ScalarProperty Name="LabelPrepType" ColumnName="LabelPrepType" />
+                <ScalarProperty Name="DestFulfmtCenterID" ColumnName="DestFulfmtCenterID" />
+                <ScalarProperty Name="ShipFromAddress1" ColumnName="ShipFromAddress1" />
+                <ScalarProperty Name="ShipFromAddress2" ColumnName="ShipFromAddress2" />
+                <ScalarProperty Name="ShipFromCity" ColumnName="ShipFromCity" />
+                <ScalarProperty Name="ShipFromState" ColumnName="ShipFromState" />
+                <ScalarProperty Name="ShipFromPostalCode" ColumnName="ShipFromPostalCode" />
+                <ScalarProperty Name="ShipFromDistrictCounty" ColumnName="ShipFromDistrictCounty" />
+                <ScalarProperty Name="ShipFromCountry" ColumnName="ShipFromCountry" />
+                <ScalarProperty Name="ShipFromName" ColumnName="ShipFromName" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyUser" ColumnName="ModifyUser" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+                <ScalarProperty Name="WhseStatus" ColumnName="WhseStatus" />
+                <ScalarProperty Name="AreCasesRequired" ColumnName="AreCasesRequired" />
+                <ScalarProperty Name="BoxContentSource" ColumnName="BoxContentSource" />
+                <ScalarProperty Name="WhseStatusUpdateBy" ColumnName="WhseStatusUpdateBy" />
+                <ScalarProperty Name="WhseStatusUpdateDate" ColumnName="WhseStatusUpdateDate" />
+                <ScalarProperty Name="OfficeStatus" ColumnName="OfficeStatus" />
+                <ScalarProperty Name="OfficeStatusUpdateBy" ColumnName="OfficeStatusUpdateBy" />
+                <ScalarProperty Name="OfficeStatusUpdateDate" ColumnName="OfficeStatusUpdateDate" />
+                <ScalarProperty Name="CaseID" ColumnName="CaseID" />
+                <ScalarProperty Name="ReimbursmentID" ColumnName="ReimbursmentID" />
+                <ScalarProperty Name="DoNotSync" ColumnName="DoNotSync" />
+                <ScalarProperty Name="ShowWhse" ColumnName="ShowWhse" />
+                <ScalarProperty Name="PercentComplete" ColumnName="PercentComplete" />
+                <ScalarProperty Name="cntBoxes" ColumnName="cntBoxes" />
+                <ScalarProperty Name="CntPallets" ColumnName="CntPallets" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

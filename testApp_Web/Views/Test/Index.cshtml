@@ -1,0 +1,98 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html ng-app="plunker">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Plunker</title>
+
+
+
+
+    
+
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+    <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.12/angular.js" data-semver="1.4.9"></script>
+
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+    <script type="text/javascript">
+
+        var app = angular.module('plunker', ['ui.bootstrap']);
+
+
+        app.controller('MainCtrl', function ($scope, $http, $sce) {
+
+            $scope.get = function () {
+                $http({
+                    method: 'GET',
+                    url: '/FBAShipments_Pick',
+
+                })
+                    .then(function successCallback(data) {
+
+                        $scope.data = data.data;
+                        console.log($scope.data);
+                        $scope.trustedHtml = $sce.trustAsHtml($scope.data);
+                    },
+                        function errorCallback(response) {
+                            console.log(response);
+                            console.log('error');
+                        });
+            }
+
+
+
+        });
+
+    </script>
+</head>
+
+
+
+<body ng-controller="MainCtrl">
+
+    <a href="remote.html" rel="facebox">text</a>
+
+
+
+    <button data-toggle="modal" data-target="#theModal" ng-click="get()">get</button>
+
+    <div class="form-group">
+        <multiselect class="input-xlarge multiselect" ng-model="vm.option1" options="p.key as p.value for p in vm.options1" select-limit="5"
+                     header="Select Stuff1" selected-header="options selected" multiple="true" required
+                     enable-filter="true" filter-placeholder="Filter stuff..">
+        </multiselect>
+    </div>
+
+    <div id="theModal" class="modal fade text-center">
+        <div class="modal-dialog" role="document" style="min-width:960px;">
+            <div class="modal-content" style="width:98%; margin-top:6px;">
+                <div ng-bind-html="trustedHtml"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

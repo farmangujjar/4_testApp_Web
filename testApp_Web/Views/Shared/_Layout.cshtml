@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0054)https://colorlib.com/etc/bootstrap-sidebar/sidebar-05/ -->
+<html lang="en">
+<head>
+
+    <title>Sidebar 05</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>*@
+    @*<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">*@
+
+
+
+
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+    <link rel="stylesheet" href="~/Content/Template_II/css/style.css">
+
+    <style type="text/css">
+        #contextMenu {
+            position: absolute;
+            display: none;
+        }
+
+        #shipments_contextMenu, #shp_details_contextMenu {
+            position: absolute;
+            display: none;
+        }
+
+        ul.dropdown-menu li {
+            padding: 0px 8px 0px 8px;
+        }
+
+        .wrap {
+            width: 90%;
+            display: block;
+            margin: 0 auto;
+        }
+
+        table {
+            border: 1px solid rgba(221, 221, 221, 1);
+        }
+
+        tr:nth-child(even) {
+            background: #F5F5F5
+        }
+
+        tr {
+            position: relative;
+        }
+
+            tr:hover {
+                background: #c9e8f7;
+                position: relative;
+            }
+    </style>
+    @*<script type="text/javascript">
+            $(function () {
+
+                var $contextMenu = $("#contextMenu");
+
+                $("body").on("contextmenu", "table tr", function (e) {
+
+                    $contextMenu.css({
+                        display: "block",
+                        left: e.pageX,
+                        top: e.pageY
+                    });
+                    //debugger;
+                    return false;
+                });
+
+                $('html').click(function () {
+                    $contextMenu.hide();
+                });
+
+                $("#contextMenu li a").click(function (e) {
+                    var f = $(this);
+                    //debugger;
+                });
+
+            });
+        </script>*@
+
+
+
+    
+    
+</head>
+<body>
+
+
+
+
+
+    @RenderBody()
+
+
+
+
+
+    @*<script src="~/Content/Template_II/js/jquery.min.js"></script>*@
+    <script src="~/Content/Template_II/js/popper.js"></script>
+    @*<script src="~/Content/Template_II/js/bootstrap.min.js"></script>*@
+    <script src="~/Content/Template_II/js/main.js"></script>
+
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'></script>
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/css/bootstrap.min.css' media="screen" />
+
+    <script src="~/Scripts/Angular/angular.min.js"></script>
+    <script src="~/Scripts/Custom_Scripts/printlabels_script.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+
+
+
+
+
+
+    @*<center>
+            <input type="button" id="btnShowPopup" value="Show Popup" class="btn btn-info btn-lg" />
+        </center>
+        <div id="MyPopup" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            $(function () {
+                $("#btnShowPopup").click(function () {
+                    var title = "";
+                    var body = "Welcome to ASPSnippets.com";
+
+                    $("#MyPopup .modal-title").html(title);
+                    $("#MyPopup .modal-body").html(body);
+                    $("#MyPopup").modal("show");
+                });
+            });
+        </script>*@
+</body>
+</html>
+
+
+
